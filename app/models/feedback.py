@@ -10,7 +10,7 @@ class feedback(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    custom_name: Mapped[str] = mapped_column(
+    customer_name: Mapped[str] = mapped_column(
         String(100),
         nullable=False
     )

@@ -36,7 +36,7 @@ class feedback(Base):
     )
 
     wine_id: Mapped[int] = mapped_column(
-        ForeignKey("wines.id")
+        ForeignKey("wines.id"),
         nullable=False
     )
 

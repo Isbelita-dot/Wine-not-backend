@@ -5,7 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
 
-class feedback(Base):
+class Feedback(Base):
     __tablename__ = "feedback"
 
     id: Mapped[int] = mapped_column(primary_key=True)

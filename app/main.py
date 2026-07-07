@@ -11,7 +11,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="Wine Not",
-    description="Rest API para e-commerce Wine Not. ",
+    description="Rest API para el e-commerce Wine Not. ",
     version="1.0.0",
     lifespan=lifespan,
 )

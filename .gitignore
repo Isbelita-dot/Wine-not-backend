@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# SQLite
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+!.env.example
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+
+# Linux
+*~
+
+# Logs
+*.log
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Type checkers
+.mypy_cache/
+
+# Ruff
+.ruff_cache/

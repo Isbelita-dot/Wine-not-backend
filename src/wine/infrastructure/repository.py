@@ -8,8 +8,8 @@ from src.wine.infrastructure.schema import WineCreate, WineUpdate
 
 class WineRepository(WineRepositoryInterface):
 
-    def init(self):
-        self.db: Session = SessionLocal()
+    def __init__(self, db: Session):
+        self.db = db
 
     def create(self, wine: WineCreate) -> Wine:
         db_wine = Wine(**wine.model_dump())

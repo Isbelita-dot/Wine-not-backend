@@ -1,5 +1,4 @@
-from app.db.base import Base
-from app.db.session import engine
+from src.shared.infrastructure.database import Base, engine
 
 """
 Creates all database tables if they do not already exist

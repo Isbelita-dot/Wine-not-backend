@@ -1,8 +1,8 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    APP_Name: str = "Wine API"
-    APP_Version: str = "1.0.0"
+    APP_NAME: str = "Wine API"
+    APP_VERSION: str = "1.0.0"
     DATABASE_URL: str = "sqlite:///wine.db"
 
     model_config = SettingsConfigDict(

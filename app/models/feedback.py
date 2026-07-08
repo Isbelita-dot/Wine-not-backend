@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.db.base import Base
+from shared.infrastructure.database import Base
 
 class Feedback(Base):
     __tablename__ = "feedback"

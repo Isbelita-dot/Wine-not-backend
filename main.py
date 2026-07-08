@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from shared.infrastructure.init_db import init_db
+from src.shared.infrastructure.init_db import init_db
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

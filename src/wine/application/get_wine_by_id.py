@@ -4,7 +4,7 @@ from src.wine.infrastructure.model import Wine
 
 class GetWineById:
 
-    def init(self, repository: WineRepositoryInterface):
+    def __init__(self, repository: WineRepositoryInterface):
         self.repository = repository
 
     def execute(self, wine_id: int) -> Wine | None:

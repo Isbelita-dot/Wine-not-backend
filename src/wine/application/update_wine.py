@@ -5,7 +5,7 @@ from src.wine.infrastructure.schema import WineUpdate
 
 class UpdateWine:
 
-    def init(self, repository: WineRepositoryInterface):
+    def __init__(self, repository: WineRepositoryInterface):
         self.repository = repository
 
     def execute(

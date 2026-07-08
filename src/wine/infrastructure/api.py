@@ -6,8 +6,8 @@ from src.shared.infrastructure.database import get_db
 from src.wine.infrastructure.repository import WineRepository
 from src.wine.infrastructure.schema import (
     WineCreate,
-    WineResponse,
     WineUpdate,
+    WineResponse,
 )
 
 from src.wine.application.create_wine import CreateWine
@@ -23,97 +23,73 @@ router = APIRouter(
 )
 
 
-@router.post(
-    "/",
-    response_model=WineResponse,
-    status_code=status.HTTP_201_CREATED,
-)
+@router.post("/", response_model=WineResponse, status_code=status.HTTP_201_CREATED)
 def create_wine(
     wine: WineCreate,
     db: Session = Depends(get_db),
 ):
     repository = WineRepository(db)
-    use_case = CreateWine(repository)
 
-    return use_case.execute(wine)
+    created_wine = CreateWine(repository).execute(wine)
+
+    return created_wine
 
 
-@router.get(
-    "/",
-    response_model=list[WineResponse],
-)
+@router.get("/",response_model=list[WineResponse])
 def get_all_wines(
     db: Session = Depends(get_db),
 ):
     repository = WineRepository(db)
-    use_case = GetAllWines(repository)
 
-    return use_case.execute()
+    wines = GetAllWines(repository).execute()
+
+    return wines
 
 
-@router.get(
-    "/{wine_id}",
-    response_model=WineResponse,
-)
+@router.get("/{wine_id}", response_model=WineResponse)
 def get_wine_by_id(
     wine_id: int,
     db: Session = Depends(get_db),
 ):
     repository = WineRepository(db)
-    use_case = GetWineById(repository)
 
-    wine = use_case.execute(wine_id)
+    wine = GetWineById(repository).execute(wine_id)
 
     if wine is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Wine not found",
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Wine not found")
 
     return wine
-@router.put(
-    "/{wine_id}",
-    response_model=WineResponse,
-)
+
+
+@router.put("/{wine_id}", response_model=WineResponse)
 def update_wine(
     wine_id: int,
     wine: WineUpdate,
     db: Session = Depends(get_db),
 ):
     repository = WineRepository(db)
-    use_case = UpdateWine(repository)
 
-    updated = use_case.execute(
+    updated_wine = UpdateWine(repository).execute(
         wine_id,
         wine,
     )
 
-    if updated is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Wine not found",
-        )
+    if updated_wine is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Wine not found")
 
-    return updated
+    return updated_wine
 
 
-@router.delete(
-    "/{wine_id}",
-    status_code=status.HTTP_204_NO_CONTENT,
-)
+@router.delete("/{wine_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_wine(
     wine_id: int,
     db: Session = Depends(get_db),
 ):
     repository = WineRepository(db)
-    use_case = DeleteWine(repository)
 
-    deleted = use_case.execute(wine_id)
+    deleted = DeleteWine(repository).execute(wine_id)
 
     if not deleted:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Wine not found",
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Wine not found")
 
     return None

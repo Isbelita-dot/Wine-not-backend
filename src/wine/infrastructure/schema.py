@@ -9,20 +9,47 @@ class WineBase(BaseSchema):
         ...,
         min_length=2,
         max_length=100,
-        examples=["Rioja"],
+        examples=["Rioja Reserva"],
     )
 
     description: str = Field(
         ...,
         min_length=5,
-        max_length=255,
+        max_length=500,
         examples=["Reserva con notas de frutos rojos."],
+    )
+
+    winery: str = Field(
+        ...,
+        min_length=2,
+        max_length=100,
+        examples=["Marqués de Cáceres"],
+    )
+
+    grape: str = Field(
+        ...,
+        min_length=2,
+        max_length=100,
+        examples=["Tempranillo"],
+    )
+
+    rating: float = Field(
+        ...,
+        ge=0,
+        le=5,
+        examples=[4.8],
+    )
+
+    badge: str = Field(
+        ...,
+        max_length=50,
+        examples=["Reserva"],
     )
 
     price: float = Field(
         ...,
         gt=0,
-        examples=[25],
+        examples=[18.90],
     )
 
     stock: int = Field(
@@ -42,7 +69,7 @@ class WineBase(BaseSchema):
         ...,
         min_length=2,
         max_length=100,
-        examples=["La Rioja"],
+        examples=["Rioja"],
     )
 
     year: int = Field(
@@ -54,7 +81,7 @@ class WineBase(BaseSchema):
 
     image_url: str = Field(
         ...,
-        examples=["https://example.com/image/rioja.jpg"],
+        examples=["./assets/images/products/rioja-reserva.png"],
     )
 
     category_id: int = Field(

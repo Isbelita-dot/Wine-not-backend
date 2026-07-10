@@ -19,6 +19,28 @@ class Wine(Base):
         nullable=False,
     )
 
+    winery: Mapped[str] = mapped_column(
+        String(100),
+        nullable=False,
+    )
+
+    grape: Mapped[str] = mapped_column(
+        String(100),
+        nullable=False,
+    )
+
+    rating: Mapped[float] = mapped_column(
+        Float,
+        nullable=False,
+        default=0,
+    )
+
+    badge: Mapped[str] = mapped_column(
+        String(50),
+        nullable=False,
+        default="",
+    )
+
     price: Mapped[float] = mapped_column(
         Float,
         nullable=False,
@@ -56,10 +78,10 @@ class Wine(Base):
     )
 
     category: Mapped["Category"] = relationship(
-        back_populates="wines"
+    back_populates="wines"
     )
 
     feedbacks: Mapped[list["Feedback"]] = relationship(
-        back_populates="wine",
-        cascade="all, delete-orphan",
+    back_populates="wine",
+    cascade="all, delete-orphan",
     )

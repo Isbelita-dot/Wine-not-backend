@@ -1,0 +1,46 @@
+from datetime import UTC,datetime
+
+from sqlalchemy import DateTime, ForeignKey, Integer, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from src.shared.infrastructure.database import Base
+
+
+class Feedback(Base):
+    __tablename__ = "feedback"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    customer_name: Mapped[str] = mapped_column(
+        String(100),
+        nullable=False,
+    )
+
+    email: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False,
+    )
+
+    rating: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+    )
+
+    comment: Mapped[str] = mapped_column(
+        String(500),
+        nullable=False,
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(UTC),
+    )
+
+    wine_id: Mapped[int] = mapped_column(
+        ForeignKey("wines.id"),
+        nullable=False,
+    )
+
+    wine: Mapped["Wine"] = relationship(
+        back_populates="feedbacks"
+    )

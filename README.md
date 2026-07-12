@@ -45,4 +45,4 @@ http://localhost:8000/redoc
 
 Isbel Hernandez
 Jordi Galea
-Edgar Soriani
+Edgar Soriano

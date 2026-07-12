@@ -1,48 +1,129 @@
-# Wine Not - Backend
+# 🍷 Wine Not Backend
 
-## Descripción
+Backend de la aplicación **Wine Not**, un e-commerce de vinos desarrollado como proyecto Full Stack utilizando FastAPI y arquitectura hexagonal.
 
-API REST desarrollada con FastAPI para un e-commerce de vinos.
+---
 
 ## Tecnologías
 
-- Python
+- Python 3
 - FastAPI
 - SQLAlchemy
 - SQLite
+- Pydantic
+- Uvicorn
 - Pytest
 
-## Estructura
+---
 
-app/
-tests/
+## Arquitectura
+
+El proyecto sigue una arquitectura hexagonal para separar la lógica de negocio de la infraestructura.
+
+```
+src
+├── category
+├── feedback
+├── wine
+└── shared
+```
+
+---
+
+## Funcionalidades
+
+- CRUD completo de vinos
+- Gestión de categorías
+- Gestión de opiniones
+- Validación de datos
+- Respuestas JSON
+- Códigos HTTP apropiados
+- Documentación automática con Swagger
+
+---
 
 ## Instalación
 
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/Isbelita-dot/Wine-not-backend.git
+```
+
+### Entrar al proyecto
+
+```bash
+cd Wine-not-backend
+```
+
+### Crear entorno virtual
+
+```bash
 python -m venv venv
+```
 
+### Activar entorno virtual
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+### Instalar dependencias
+
+```bash
 pip install -r requirements.txt
+```
 
-uvicorn app.main:app --reload
+### Ejecutar la aplicación
+
+```bash
+uvicorn src.main:app --reload
+```
+
+---
 
 ## Documentación
 
-Swagger:
+Swagger
 
-http://localhost:8000/docs
+```
+http://127.0.0.1:8000/docs
+```
 
-ReDoc:
+ReDoc
 
-http://localhost:8000/redoc
+```
+http://127.0.0.1:8000/redoc
+```
 
-## Endpoints
+---
 
-- Wines
-- Categories
-- Feedback
+## Testing
 
-## Equipo
+```bash
+pytest
+```
 
-Isbel Hernandez
-Jordi Galea
-Edgar Soriano
+---
+
+## Base de datos
+
+SQLite
+
+```
+wine.db
+```
+
+---
+
+## Autores
+
+Isbel Hernandez, Jordi Galea, Edgar Soriano.

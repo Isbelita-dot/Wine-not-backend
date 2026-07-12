@@ -106,6 +106,26 @@ http://127.0.0.1:8000/redoc
 
 ---
 
+# Documentación de la API
+
+La API está documentada automáticamente mediante Swagger UI y ReDoc.
+
+## Swagger
+
+![Swagger](docs/swagger/swagger-home.png)
+
+## Endpoints de Wines
+
+![Wines](docs/swagger/swagger-wines.png)
+
+## Endpoints de Categories
+
+![Categories](docs/swagger/swagger-categories.png)
+
+## Endpoints de Feedback
+
+![Feedback](docs/swagger/swagger-feedback.png)
+
 ## Testing
 
 ```bash

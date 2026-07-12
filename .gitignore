@@ -44,3 +44,10 @@ dist/
 
 # Ruff
 .ruff_cache/
+
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+wine.db
+.env
